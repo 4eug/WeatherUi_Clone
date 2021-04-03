@@ -7,7 +7,8 @@ Dribbble :https://dribbble.com/shots/15411806-Weather-App
 
 ## UI Design
 
-<img src="assets/ui/Weather Ui.jpg" height="500em" />
+<img src="assets/ui/WeatherUi.jpg" height="500em" />
 
 ## Preview On Device
-"# WeatherUi_Clone" 
+
+"# WeatherUi_Clone"
