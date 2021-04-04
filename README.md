@@ -10,5 +10,3 @@ Dribbble :https://dribbble.com/shots/15411806-Weather-App
 <img src="assets/ui/WeatherUi.jpg" height="500em" />
 
 ## Preview On Device
-
-"# WeatherUi_Clone"
