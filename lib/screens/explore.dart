@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:weather_app_clone/utils/constants.dart';
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key}) : super(key: key);
+class ExploreScreen extends StatefulWidget {
+  ExploreScreen({Key key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _ExploreScreenState createState() => _ExploreScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ExploreScreenState extends State<ExploreScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  bool isSwitchOn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -50,50 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 5),
               child: Image.asset(
-                IconsAvailable.menuIcon["assetPath"],
+                IconsAvailable.backIcon["assetPath"],
                 height: SizeConfig.blockSizeVertical * 2,
                 width: SizeConfig.blockSizeHorizontal * 5,
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          Column(
-            children: [
-              Padding(
-                  padding: EdgeInsets.only(
-                top: SizeConfig.blockSizeVertical * 12,
-                bottom: SizeConfig.blockSizeVertical * 2,
-                left: SizeConfig.blockSizeHorizontal * 4,
-              )),
-              Center(
-                child: Text(
-                  "Accra,Ghana",
-                  style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400),
-                ),
-              ),
-              SizedBox(height: 15),
-              Center(
-                child: Image.asset(
-                  ImagesAvailable.partlyCloudy["assetPath"],
-                  height: SizeConfig.blockSizeVertical * 20,
-                  width: SizeConfig.blockSizeHorizontal * 200,
-                ),
-              ),
-              SizedBox(height: 5),
-              Center(
-                child: Text(
-                  "31" "°",
-                  style: TextStyle(
-                      fontSize: 120,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
-                ),
-              )
-            ],
-          )
         ],
       ),
     );

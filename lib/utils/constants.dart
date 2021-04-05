@@ -7,8 +7,28 @@ class IconsAvailable {
   };
 
   static const backIcon = {
-    'assetImage': AssetImage('assets/images/back.png'),
-    'assetPath': 'assets/images/back.png',
+    'assetImage': AssetImage('assets/images/arrowleft.png'),
+    'assetPath': 'assets/images/arrowleft.png',
+  };
+
+  static const homeIcon = {
+    'assetImage': AssetImage('assets/images/home.png'),
+    'assetPath': 'assets/images/home.png',
+  };
+
+  static const searchIcon = {
+    'assetImage': AssetImage('assets/images/search.png'),
+    'assetPath': 'assets/images/search.png',
+  };
+
+  static const discoveryIcon = {
+    'assetImage': AssetImage('assets/images/explore.png'),
+    'assetPath': 'assets/images/explore.png',
+  };
+
+  static const profileIcon = {
+    'assetImage': AssetImage('assets/images/profile.png'),
+    'assetPath': 'assets/images/profile.png',
   };
 }
 
