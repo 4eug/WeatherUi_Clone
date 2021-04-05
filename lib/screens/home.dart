@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Positioned(
               top: SizeConfig.blockSizeVertical * 1,
-              left: SizeConfig.blockSizeHorizontal * 80,
+              left: SizeConfig.blockSizeHorizontal * 86,
               child: Container(
                 padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 4),
                 child: Switch(
