@@ -28,6 +28,7 @@ dependencies:
   flutter_switch: ^0.3.0
   google_nav_bar: ^5.0.3
   line_icons: ^2.0.1
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
   flutter_test:
