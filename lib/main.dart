@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_clone/screens/explore.dart';
 import 'package:weather_app_clone/screens/home.dart';
 
 void main() {
@@ -10,6 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          brightness: Brightness.light,
+        ),
+      ),
       title: 'Weather App',
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),

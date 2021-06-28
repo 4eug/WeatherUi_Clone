@@ -13,7 +13,6 @@ class _NavigationBarState extends State<NavigationBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 35, horizontal: 50),
       child: Container(
         height: 60,
         decoration: BoxDecoration(

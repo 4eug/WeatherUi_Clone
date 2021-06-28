@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_clone/utils/app_colors.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:weather_app_clone/utils/constants.dart';
@@ -14,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  bool isSwitchOn = false;
+
   // final Color activeColor = Color;
   // final Color trackColor;
   // final ValueChanged<bool> onChanged;
@@ -22,28 +23,45 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
-    // ignore: unused_local_variable
-    final navbar = IconButton(
-        icon: Icon(
-          Feather.menu,
-          size: 30,
-          color: Colors.black,
-        ),
-        onPressed: () {
-          _scaffoldKey.currentState.openDrawer();
-        });
-
     return Scaffold(
-      key: _scaffoldKey,
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: SingleChildScrollView(
-        child: Stack(
+        backgroundColor: bgColor,
+        appBar: AppBar(
+          key: _scaffoldKey,
+          backgroundColor: bgColor,
+          elevation: 0.0,
+          leading: Image.asset(
+            IconsAvailable.menuIcon["assetPath"],
+            height: SizeConfig.blockSizeVertical * 2,
+            width: SizeConfig.blockSizeHorizontal * 5,
+          ),
+          actions: [
+            Container(
+              child: Switch(
+                  value: isSwitchOn,
+                  activeColor: Colors.yellow,
+                  onChanged: (value) {
+                    setState(() {
+                      isSwitchOn = value;
+                      isSwitchOn
+                          ? bgColor = Colors.black
+                          : bgColor = Colors.white;
+                      isSwitchOn
+                          ? textColor = Colors.white
+                          : textColor = Colors.black;
+                      //review
+                      isSwitchOn ? Brightness.light : Brightness.dark;
+                    });
+                  }),
+            ),
+          ],
+        ),
+        body: Stack(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(vertical: 145),
+              padding: EdgeInsets.symmetric(
+                  vertical: getProportionateScreenHeight(80)),
               child: Opacity(
-                opacity: .1,
+                opacity: 0.2,
                 child: Image.asset(
                   ImagesAvailable.backgroundImage["assetPath"],
                   fit: BoxFit.fill,
@@ -51,163 +69,158 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            Positioned(
-              top: SizeConfig.blockSizeVertical * 2,
-              left: SizeConfig.blockSizeHorizontal * 4,
-              child: Container(
-                padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 5),
-                child: Image.asset(
-                  IconsAvailable.menuIcon["assetPath"],
-                  height: SizeConfig.blockSizeVertical * 2,
-                  width: SizeConfig.blockSizeHorizontal * 5,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Positioned(
-              top: SizeConfig.blockSizeVertical * 1,
-              left: SizeConfig.blockSizeHorizontal * 86,
-              child: Container(
-                padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 4),
-                child: Switch(
-                    value: isSwitchOn,
-                    activeColor: Colors.yellow,
-                    onChanged: (value) {
-                      setState(() {
-                        isSwitchOn = value;
-                      });
-                    }),
-              ),
-            ),
             Column(
               children: [
-                Padding(
-                    padding: EdgeInsets.only(
-                  top: SizeConfig.blockSizeVertical * 12,
-                  bottom: SizeConfig.blockSizeVertical * 2,
-                  left: SizeConfig.blockSizeHorizontal * 4,
-                )),
-                Center(
-                  child: Text(
-                    "Accra,Ghana",
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: Fonts.primaryFont),
-                  ),
+                SizedBox(
+                  height: getProportionateScreenHeight(20),
                 ),
-                SizedBox(height: 15),
-                Center(
-                  child: Image.asset(
-                    ImagesAvailable.partlyCloudy["assetPath"],
-                    height: SizeConfig.blockSizeVertical * 20,
-                    width: SizeConfig.blockSizeHorizontal * 200,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Accra,Ghana",
+                      style: TextStyle(
+                          fontSize: getProportionateScreenWidth(19),
+                          color: textColor,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: Fonts.primaryFont),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 5),
+                SizedBox(
+                  height: getProportionateScreenHeight(37),
+                ),
+                Center(
+                  child: Image.asset(ImagesAvailable.partlyCloudy["assetPath"],
+                      // height: getProportionateScreenWidth(20),
+                      width: getProportionateScreenWidth(162)),
+                ),
+                SizedBox(height: getProportionateScreenHeight(5)),
                 Center(
                   child: degrees(),
                 ),
-                Center(
-                  child: Text(
-                    "Partly Cloudy",
-                    style: TextStyle(
-                      fontSize: 38,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: Fonts.primaryFont,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Partly Cloudy",
+                      style: TextStyle(
+                        fontSize: getProportionateScreenWidth(23),
+                        color: textColor,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: Fonts.primaryFont,
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: getProportionateScreenHeight(90)),
                 Center(
                   child: Text(
                     "Hourly",
                     style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      color: textColor,
+                      fontWeight: FontWeight.w600,
                       fontFamily: Fonts.primaryFont,
                     ),
                   ),
                 ),
-                SizedBox(height: 5),
+                SizedBox(height: getProportionateScreenHeight(20)),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                      "13:00pm",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: Fonts.primaryFont,
-                      ),
+                    Column(
+                      children: [
+                        Text(
+                          "13:00pm",
+                          style: TextStyle(
+                            height: 1,
+                            fontSize: 11,
+                            color: textColor,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: Fonts.primaryFont,
+                          ),
+                        ),
+                        SizedBox(height: getProportionateScreenHeight(5)),
+                        Container(
+                          child: Image.asset(
+                            ImagesAvailable.partlyCloudy["assetPath"],
+                            height: getProportionateScreenHeight(50),
+                            width: getProportionateScreenHeight(50),
+                          ),
+                        ),
+                        SizedBox(
+                          height: getProportionateScreenHeight(1),
+                        ),
+                        degrees1()
+                      ],
                     ),
-                    Text(
-                      "16:00pm",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: Fonts.primaryFont,
-                      ),
+                    Column(
+                      children: [
+                        Text(
+                          "16:00pm",
+                          style: TextStyle(
+                            height: 1,
+                            fontSize: 11,
+                            color: textColor,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: Fonts.primaryFont,
+                          ),
+                        ),
+                        SizedBox(height: getProportionateScreenHeight(5)),
+                        Container(
+                          child: Image.asset(
+                            ImagesAvailable.sunny["assetPath"],
+                            height: getProportionateScreenHeight(50),
+                            width: getProportionateScreenHeight(50),
+                          ),
+                        ),
+                        SizedBox(
+                          height: getProportionateScreenHeight(1),
+                        ),
+                        degrees2()
+                      ],
                     ),
-                    Text(
-                      "07:00pm",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: Fonts.primaryFont,
-                      ),
+                    Column(
+                      children: [
+                        Text(
+                          "07:00pm",
+                          style: TextStyle(
+                            height: 1,
+                            fontSize: 11,
+                            color: textColor,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: Fonts.primaryFont,
+                          ),
+                        ),
+                        SizedBox(height: getProportionateScreenHeight(5)),
+                        Container(
+                          child: Image.asset(
+                            ImagesAvailable.moonCloudy["assetPath"],
+                            height: getProportionateScreenHeight(50),
+                            width: getProportionateScreenHeight(50),
+                          ),
+                        ),
+                        SizedBox(
+                          height: getProportionateScreenHeight(1),
+                        ),
+                        degrees3()
+                      ],
                     ),
                   ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      child: Image.asset(
-                        ImagesAvailable.partlyCloudy["assetPath"],
-                        height: SizeConfig.blockSizeVertical * 10,
-                        width: SizeConfig.blockSizeHorizontal * 15,
-                      ),
-                    ),
-                    Container(
-                      child: Image.asset(
-                        ImagesAvailable.sunny["assetPath"],
-                        height: SizeConfig.blockSizeVertical * 10,
-                        width: SizeConfig.blockSizeHorizontal * 15,
-                      ),
-                    ),
-                    Container(
-                      child: Image.asset(
-                        ImagesAvailable.moonCloudy["assetPath"],
-                        height: SizeConfig.blockSizeVertical * 10,
-                        width: SizeConfig.blockSizeHorizontal * 15,
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(height: 0.1),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [degrees1(), degrees2(), degrees3()],
                 ),
               ],
-            )
+            ),
+            Positioned(
+                bottom: 35,
+                left: getProportionateScreenWidth(50),
+                child: Container(
+                    height: getProportionateScreenHeight(60),
+                    width: getProportionateScreenWidth(275),
+                    child: NavigationBar()))
           ],
-        ),
-      ),
-      bottomNavigationBar: NavigationBar(),
-    );
+        ));
   }
 }

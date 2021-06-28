@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
+bool isSwitchOn = false;
+
 class IconsAvailable {
   static const menuIcon = {
     'assetImage': AssetImage('assets/images/menu.png'),
