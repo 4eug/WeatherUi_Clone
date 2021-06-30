@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_clone/screens/explore.dart';
 import 'package:weather_app_clone/screens/home.dart';
 
 void main() {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:weather_app_clone/utils/app_colors.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:weather_app_clone/utils/constants.dart';
 import 'package:weather_app_clone/widgets/navigationbar_widget.dart';
 import 'package:weather_app_clone/widgets/textwidget.dart';
@@ -16,23 +16,22 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  // final Color activeColor = Color;
-  // final Color trackColor;
-  // final ValueChanged<bool> onChanged;
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
         backgroundColor: bgColor,
         appBar: AppBar(
+          centerTitle: true,
           key: _scaffoldKey,
           backgroundColor: bgColor,
           elevation: 0.0,
-          leading: Image.asset(
-            IconsAvailable.menuIcon["assetPath"],
-            height: SizeConfig.blockSizeVertical * 2,
-            width: SizeConfig.blockSizeHorizontal * 5,
+          leading: IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              'assets/images/Vectormenu.svg',
+              color: textColor,
+            ),
           ),
           actions: [
             Container(

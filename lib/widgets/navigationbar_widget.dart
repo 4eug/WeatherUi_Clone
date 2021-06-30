@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:weather_app_clone/utils/constants.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:weather_app_clone/screens/explore.dart';
+import 'package:weather_app_clone/utils/app_colors.dart';
+import 'package:weather_app_clone/utils/app_config.dart';
 
 class NavigationBar extends StatefulWidget {
   NavigationBar({Key key}) : super(key: key);
@@ -19,7 +21,7 @@ class _NavigationBarState extends State<NavigationBar> {
           boxShadow: [
             BoxShadow(color: Colors.grey),
           ],
-          color: Colors.white,
+          color: bgColor,
           borderRadius: BorderRadius.circular(50),
         ),
         child: Row(
@@ -27,32 +29,43 @@ class _NavigationBarState extends State<NavigationBar> {
           children: [
             InkWell(
               onTap: () {},
-              child: Image.asset(
-                IconsAvailable.homeIcon["assetPath"],
-              ),
+              child: SvgPicture.asset(
+                  'assets/images/Vectorhome.svg',
+                  height: getProportionateScreenHeight(18),
+                  color: textColor,
+                )
+                // Image.asset(
+                //   IconsAvailable.homeIcon["assetPath"],
+                // ),
             ),
             InkWell(
               onTap: () {},
-              child: Image.asset(
-                IconsAvailable.searchIcon["assetPath"],
-              ),
+              child: SvgPicture.asset(
+                  'assets/images/Vectorsearch.svg',
+                  height: getProportionateScreenHeight(18),
+                  color: textColor,
+                )
             ),
             InkWell(
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => ExploreScreen()),
-                // );
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ExploreScreen()),
+                  );
               },
-              child: Image.asset(
-                IconsAvailable.discoveryIcon["assetPath"],
-              ),
+              child: SvgPicture.asset(
+                  'assets/images/Vectorexplore.svg',
+                  height: getProportionateScreenHeight(18),
+                  color: textColor,
+                )
             ),
             InkWell(
               onTap: () {},
-              child: Image.asset(
-                IconsAvailable.profileIcon["assetPath"],
-              ),
+              child: SvgPicture.asset(
+                  'assets/images/Vectoruser.svg',
+                  height: getProportionateScreenHeight(18),
+                  color: textColor,
+                )
             )
           ],
         ),
