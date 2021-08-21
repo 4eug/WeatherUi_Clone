@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:http/http.dart';
 import 'package:weather_app_clone/utils/app_colors.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:weather_app_clone/utils/constants.dart';
 import 'package:weather_app_clone/widgets/navigationbar_widget.dart';
 import 'package:weather_app_clone/widgets/textwidget.dart';
+// import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -15,6 +17,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  awaitHTTPrequest() async {
+    Response response = await get(Uri.parse(
+        'https://api.weatherapi.com/v1/forecast.json?key=83b5ecf2187d4a67807102005210907&q=Accra&days=7&aqi=no&alerts=no'));
+    print(response);
+    final String json = response.body;
+    print(json);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // Response response = get('http://worldtimeapi.org/api/timezone/$url');
+    // Response response = get('https://example.com/whatsit/create');
+    awaitHTTPrequest();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     setState(() {
                       isSwitchOn = value;
                       isSwitchOn
-                          ? bgColor = Colors.black
+                          ? bgColor = Color(0xFF262626)
                           : bgColor = Colors.white;
                       isSwitchOn
                           ? textColor = Colors.white
