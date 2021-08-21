@@ -73,6 +73,8 @@ class _HomeScreenState extends State<HomeScreen> {
               final forecast = snapshot.data;
               final region = forecast.region;
               final location = forecast.location;
+              final country = forecast.country;
+              final temperature = forecast.tempCelsius.toInt();
               return Stack(
                 children: [
                   Container(
@@ -96,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Accra, Ghana",
+                            "$location, $country",
                             style: TextStyle(
                                 fontSize: getProportionateScreenWidth(19),
                                 color: textColor,
@@ -116,7 +118,38 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SizedBox(height: getProportionateScreenHeight(5)),
                       Center(
-                        child: degrees(),
+                        child:
+                            // degrees()
+                            Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RichText(
+                              textAlign: TextAlign.center,
+                              text: TextSpan(
+                                // Note: Styles for TextSpans must be explicitly defined.
+                                // Child text spans will inherit styles from parent
+                                style: TextStyle(
+                                  fontSize: getProportionateScreenWidth(80),
+                                  color: textColor,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: Fonts.primaryFont,
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(text: temperature.toString()),
+                                  TextSpan(
+                                      text: "°",
+                                      style: TextStyle(
+                                        fontSize:
+                                            getProportionateScreenWidth(80),
+                                        color: Colors.yellow,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: Fonts.primaryFont,
+                                      ))
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

@@ -21,7 +21,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
         backgroundColor: bgColor,
         elevation: 0.0,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: Icon(
               Icons.chevron_left,
               color: textColor,
@@ -454,7 +456,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                 fontWeight: FontWeight.w500,
                                 fontFamily: Fonts.primaryFont),
                           ),
-                          
                         ],
                       ),
                       Text(
@@ -471,7 +472,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
               ),
             ),
           )
-          
         ],
       ),
     );
