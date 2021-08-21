@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
+import 'package:weather_app_clone/helpers/weatherGetter.dart';
+import 'package:weather_app_clone/model/weather.dart';
 import 'package:weather_app_clone/utils/app_colors.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:weather_app_clone/utils/constants.dart';
@@ -17,21 +19,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  awaitHTTPrequest() async {
-    Response response = await get(Uri.parse(
-        'https://api.weatherapi.com/v1/forecast.json?key=83b5ecf2187d4a67807102005210907&q=Accra&days=7&aqi=no&alerts=no'));
-    print(response);
-    final String json = response.body;
-    print(json);
-  }
+   Future<WeatherForecast> futureWeather;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    // Response response = get('http://worldtimeapi.org/api/timezone/$url');
-    // Response response = get('https://example.com/whatsit/create');
-    awaitHTTPrequest();
+    futureWeather = WeatherService().fetchWeather();
   }
 
   @override
