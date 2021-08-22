@@ -71,10 +71,11 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final forecast = snapshot.data;
-              final region = forecast.region;
               final location = forecast.location;
               final country = forecast.country;
               final temperature = forecast.tempCelsius.toInt();
+              final currentCondition = forecast.currentCondition;
+              final hourlyTemp = forecast.forecastHour;
               return Stack(
                 children: [
                   Container(
@@ -155,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Partly Cloudy",
+                            currentCondition,
                             style: TextStyle(
                               fontSize: getProportionateScreenWidth(23),
                               color: textColor,
@@ -183,6 +184,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
+                          //
+                          // first hourly forecast
+                          //
                           Column(
                             children: [
                               Text(
@@ -206,9 +210,32 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 height: getProportionateScreenHeight(1),
                               ),
-                              degrees1()
+                              // degrees1()
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(hourlyTemp[0].tempC.round().toString(),
+                                      style: TextStyle(
+                                        height: 1,
+                                        fontSize: 22,
+                                        color: textColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: Fonts.primaryFont,
+                                      )),
+                                  Text("°",
+                                      style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.yellow,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: Fonts.primaryFont,
+                                      ))
+                                ],
+                              )
                             ],
                           ),
+                          //
+                          // second hourly forecast
+                          //
                           Column(
                             children: [
                               Text(
@@ -232,9 +259,32 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 height: getProportionateScreenHeight(1),
                               ),
-                              degrees2()
+                              // degrees2()
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(hourlyTemp[1].tempC.round().toString(),
+                                      style: TextStyle(
+                                        height: 1,
+                                        fontSize: 22,
+                                        color: textColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: Fonts.primaryFont,
+                                      )),
+                                  Text("°",
+                                      style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.yellow,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: Fonts.primaryFont,
+                                      ))
+                                ],
+                              )
                             ],
                           ),
+                          //
+                          // third hourly forecast
+                          //
                           Column(
                             children: [
                               Text(
@@ -258,7 +308,27 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 height: getProportionateScreenHeight(1),
                               ),
-                              degrees3()
+                              // degrees3()
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(hourlyTemp[12].tempC.toString(),
+                                      style: TextStyle(
+                                        height: 1,
+                                        fontSize: 22,
+                                        color: textColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: Fonts.primaryFont,
+                                      )),
+                                  Text("°",
+                                      style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.yellow,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: Fonts.primaryFont,
+                                      ))
+                                ],
+                              )
                             ],
                           ),
                         ],
