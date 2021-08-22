@@ -345,7 +345,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               );
             }
-            return Column();
+            // loading weather animation
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/animation/load-icon-gif-21.jpg.gif',
+                  width: 400,
+                ),
+                SizedBox(
+                  height: 120.0,
+                )
+              ],
+            );
           },
         ));
   }
