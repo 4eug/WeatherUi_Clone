@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     setState(() {
                       isSwitchOn = value;
                       isSwitchOn
-                          ? bgColor = Color(0xFF262626)
+                          ? bgColor = Color(0xFF09090A)
                           : bgColor = Colors.white;
                       isSwitchOn
                           ? textColor = Colors.white
@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Center(
                         child: Image.asset(
-                            ImagesAvailable.partlyCloudy["assetPath"],
+                            'assets/images/$currentCondition${dttInt > 6 && dttInt < 18 ? 'day' : 'night'}.png',
                             // height: getProportionateScreenWidth(20),
                             width: getProportionateScreenWidth(162)),
                       ),

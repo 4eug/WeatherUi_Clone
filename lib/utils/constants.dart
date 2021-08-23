@@ -5,6 +5,8 @@ bool isSwitchOn = false;
 
 var dayOrNight;
 var dtt = DateFormat('H').format(DateTime.now());
+var dttInt = int.parse(dtt);
+
 
 class IconsAvailable {
   static const menuIcon = {
@@ -49,13 +51,13 @@ class ImagesAvailable {
   };
 
   static const partlyCloudy = {
-    'assetImage': AssetImage('assets/images/Sunny.png'),
-    'assetPath': 'assets/images/Sunny.png',
+    'assetImage': AssetImage('assets/images/Sunnyday.png'),
+    'assetPath': 'assets/images/Sunnyday.png',
   };
 
   static const sunny = {
-    'assetImage': AssetImage('assets/images/Sunny.png'),
-    'assetPath': 'assets/images/Sunny.png',
+    'assetImage': AssetImage('assets/images/Sunnyday.png'),
+    'assetPath': 'assets/images/Sunnyday.png',
   };
 
   static const rainy = {

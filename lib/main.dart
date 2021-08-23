@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
+      darkTheme: ThemeData(brightness: Brightness.dark),
       title: 'Weather App',
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
