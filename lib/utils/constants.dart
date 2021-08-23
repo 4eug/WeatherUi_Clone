@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 
 bool isSwitchOn = false;
+
+var dayOrNight;
+var dtt = DateFormat('H').format(DateTime.now());
 
 class IconsAvailable {
   static const menuIcon = {
@@ -45,13 +49,13 @@ class ImagesAvailable {
   };
 
   static const partlyCloudy = {
-    'assetImage': AssetImage('assets/images/27.png'),
-    'assetPath': 'assets/images/27.png',
+    'assetImage': AssetImage('assets/images/Sunny.png'),
+    'assetPath': 'assets/images/Sunny.png',
   };
 
   static const sunny = {
-    'assetImage': AssetImage('assets/images/26.png'),
-    'assetPath': 'assets/images/26.png',
+    'assetImage': AssetImage('assets/images/Sunny.png'),
+    'assetPath': 'assets/images/Sunny.png',
   };
 
   static const rainy = {

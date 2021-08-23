@@ -8,7 +8,6 @@ import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:weather_app_clone/utils/constants.dart';
 import 'package:weather_app_clone/widgets/navigationbar_widget.dart';
 import 'package:weather_app_clone/widgets/textwidget.dart';
-// import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -312,7 +311,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(hourlyTemp[12].tempC.toString(),
+                                  Text(hourlyTemp[12].tempC.round().toString(),
                                       style: TextStyle(
                                         height: 1,
                                         fontSize: 22,
