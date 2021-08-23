@@ -4,18 +4,21 @@ import 'package:weather_app_clone/screens/home.dart';
 void main() {
   runApp(MyApp());
 }
- 
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        // scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
           brightness: Brightness.light,
         ),
       ),
-      darkTheme: ThemeData(brightness: Brightness.dark),
+      darkTheme: ThemeData(
+          // scaffoldBackgroundColor: Colors.black,
+          brightness: Brightness.dark),
       title: 'Weather App',
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),

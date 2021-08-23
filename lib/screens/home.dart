@@ -58,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       isSwitchOn
                           ? textColor = Colors.white
                           : textColor = Colors.black;
+                      isSwitchOn ? bgOpacity = 0.9 : bgOpacity = 0.2;
                       //review
                       isSwitchOn ? Brightness.light : Brightness.dark;
                     });
@@ -81,7 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: EdgeInsets.symmetric(
                         vertical: getProportionateScreenHeight(80)),
                     child: Opacity(
-                      opacity: 0.2,
+                      //change opacity to dynamic
+                      opacity: bgOpacity,
                       child: Image.asset(
                         ImagesAvailable.backgroundImage["assetPath"],
                         fit: BoxFit.fill,
