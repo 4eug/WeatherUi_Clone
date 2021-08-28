@@ -35,32 +35,39 @@ class WeatherForecast {
 
 class ForecastDay {
   final String date;
+  final String condition;
+  final String mintempC;
+  final String maxTempC;
 
-  ForecastDay({this.date});
+  ForecastDay({this.date, this.condition, this.mintempC, this.maxTempC});
 
   factory ForecastDay.fromJson(Map<String, dynamic> parsedJson) {
-    return ForecastDay(date: parsedJson['date']);
+    return ForecastDay(
+        date: parsedJson['date'],
+        condition: parsedJson['day']['condition']['text'],
+        mintempC: parsedJson['day']['mintemp_c'],
+        maxTempC: parsedJson['day']['maxtemp_c']);
   }
 }
 
 class ForecastHour {
   final double tempC;
-  // final String condition;
-  // final String time;
+  final String condition;
+  final String time;
   // final String timeEpoch;
 
   ForecastHour({
-    // this.condition,
+    this.condition,
     this.tempC,
-    // this.time,
+    this.time,
     // this.timeEpoch
   });
 
   factory ForecastHour.fromJson(Map<String, dynamic> parsedJson) {
     return ForecastHour(
       tempC: parsedJson['temp_c'],
-      // condition: parsedJson['condition']['text'],
-      // time: parsedJson['time'],
+      condition: parsedJson['condition']['text'],
+      time: parsedJson['time'],
       // timeEpoch: parsedJson['time_epoch']
     );
   }

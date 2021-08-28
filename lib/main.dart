@@ -13,6 +13,7 @@ class MediaQ extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyApp(),
     );
   }
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           accentColor: Colors.black,
           cardColor: Colors.black,
@@ -55,14 +57,14 @@ class MyApp extends StatelessWidget {
             ),
             // big temperature on explore page
             headline4: TextStyle(
-              fontSize: getProportionateScreenWidth(10),
+              fontSize: getProportionateScreenWidth(70),
               color: Colors.black,
               fontWeight: FontWeight.w600,
               fontFamily: Fonts.primaryFont,
             ),
             // small temperature on explore page
             headline5: TextStyle(
-              fontSize: getProportionateScreenWidth(70),
+              fontSize: getProportionateScreenWidth(30),
               color: Colors.black,
               fontWeight: FontWeight.w600,
               fontFamily: Fonts.primaryFont,
@@ -182,7 +184,6 @@ class MyApp extends StatelessWidget {
             ),
           )),
       title: 'Weather App',
-      debugShowCheckedModeBanner: false,
       home: HomeScreen(),
     );
   }
