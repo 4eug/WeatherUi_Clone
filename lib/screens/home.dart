@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:http/http.dart';
 import 'package:weather_app_clone/helpers/weatherGetter.dart';
 import 'package:weather_app_clone/model/weather.dart';
 import 'package:weather_app_clone/utils/app_colors.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:weather_app_clone/utils/constants.dart';
 import 'package:weather_app_clone/widgets/navigationbar_widget.dart';
-import 'package:weather_app_clone/widgets/textwidget.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -29,19 +27,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
+    // SizeConfig().init(context);
     return Scaffold(
-        backgroundColor: bgColor,
         appBar: AppBar(
           centerTitle: true,
           key: _scaffoldKey,
-          backgroundColor: bgColor,
           elevation: 0.0,
           leading: IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
               'assets/images/Vectormenu.svg',
-              color: textColor,
+              color: Theme.of(context).cardColor,
             ),
           ),
           actions: [
@@ -52,12 +48,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   onChanged: (value) {
                     setState(() {
                       isSwitchOn = value;
-                      isSwitchOn
-                          ? bgColor = Color(0xFF09090A)
-                          : bgColor = Colors.white;
-                      isSwitchOn
-                          ? textColor = Colors.white
-                          : textColor = Colors.black;
+                      // invalid with theme
+                      // isSwitchOn
+                      //     ? bgColor = Color(0xFF09090A)
+                      //     : bgColor = Colors.white;
+                      // isSwitchOn
+                      //     ? textColor = Colors.white
+                      //     : textColor = Colors.black;
                       isSwitchOn ? bgOpacity = 0.9 : bgOpacity = 0.2;
                       //review
                       isSwitchOn ? Brightness.light : Brightness.dark;
@@ -101,11 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             "$location, $country",
-                            style: TextStyle(
-                                fontSize: getProportionateScreenWidth(19),
-                                color: textColor,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: Fonts.primaryFont),
+                            style: Theme.of(context).textTheme.headline2
                           ),
                         ],
                       ),
@@ -130,23 +123,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               text: TextSpan(
                                 // Note: Styles for TextSpans must be explicitly defined.
                                 // Child text spans will inherit styles from parent
-                                style: TextStyle(
-                                  fontSize: getProportionateScreenWidth(80),
-                                  color: textColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: Fonts.primaryFont,
-                                ),
+                                style: Theme.of(context).textTheme.headline1,
                                 children: <TextSpan>[
                                   TextSpan(text: temperature.toString()),
                                   TextSpan(
                                       text: "°",
-                                      style: TextStyle(
-                                        fontSize:
-                                            getProportionateScreenWidth(80),
-                                        color: Colors.yellow,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: Fonts.primaryFont,
-                                      ))
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2)
                                 ],
                               ),
                             ),
@@ -158,12 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             currentCondition,
-                            style: TextStyle(
-                              fontSize: getProportionateScreenWidth(23),
-                              color: textColor,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: Fonts.primaryFont,
-                            ),
+                            style: Theme.of(context).textTheme.headline3
                           ),
                         ],
                       ),
@@ -171,12 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Center(
                         child: Text(
                           "Hourly",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: textColor,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: Fonts.primaryFont,
-                          ),
+                          style: Theme.of(context).textTheme.subtitle1
                         ),
                       ),
                       SizedBox(height: getProportionateScreenHeight(20)),
@@ -192,13 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Text(
                                 "13:00pm",
-                                style: TextStyle(
-                                  height: 1,
-                                  fontSize: 11,
-                                  color: textColor,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: Fonts.primaryFont,
-                                ),
+                                style: Theme.of(context).textTheme.subtitle2
                               ),
                               SizedBox(height: getProportionateScreenHeight(5)),
                               Container(
@@ -216,13 +183,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(hourlyTemp[0].tempC.round().toString(),
-                                      style: TextStyle(
-                                        height: 1,
-                                        fontSize: 22,
-                                        color: textColor,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: Fonts.primaryFont,
-                                      )),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1),
                                   Text("°",
                                       style: TextStyle(
                                         fontSize: 30,
@@ -241,13 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Text(
                                 "16:00pm",
-                                style: TextStyle(
-                                  height: 1,
-                                  fontSize: 11,
-                                  color: textColor,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: Fonts.primaryFont,
-                                ),
+                                style: Theme.of(context).textTheme.subtitle2
                               ),
                               SizedBox(height: getProportionateScreenHeight(5)),
                               Container(
@@ -265,13 +222,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(hourlyTemp[1].tempC.round().toString(),
-                                      style: TextStyle(
-                                        height: 1,
-                                        fontSize: 22,
-                                        color: textColor,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: Fonts.primaryFont,
-                                      )),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1),
                                   Text("°",
                                       style: TextStyle(
                                         fontSize: 30,
@@ -290,13 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Text(
                                 "07:00pm",
-                                style: TextStyle(
-                                  height: 1,
-                                  fontSize: 11,
-                                  color: textColor,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: Fonts.primaryFont,
-                                ),
+                                style: Theme.of(context).textTheme.subtitle2
                               ),
                               SizedBox(height: getProportionateScreenHeight(5)),
                               Container(
@@ -314,13 +261,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(hourlyTemp[12].tempC.round().toString(),
-                                      style: TextStyle(
-                                        height: 1,
-                                        fontSize: 22,
-                                        color: textColor,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: Fonts.primaryFont,
-                                      )),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1),
                                   Text("°",
                                       style: TextStyle(
                                         fontSize: 30,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:weather_app_clone/screens/explore.dart';
-import 'package:weather_app_clone/utils/app_colors.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
 
 class NavigationBar extends StatefulWidget {
@@ -19,9 +18,9 @@ class _NavigationBarState extends State<NavigationBar> {
         height: 60,
         decoration: BoxDecoration(
           boxShadow: [
-            BoxShadow(color: Colors.grey),
+            BoxShadow(color: Theme.of(context).buttonColor),
           ],
-          color: bgColor,
+          color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(50),
         ),
         child: Row(
@@ -32,7 +31,7 @@ class _NavigationBarState extends State<NavigationBar> {
               child: SvgPicture.asset(
                   'assets/images/Vectorhome.svg',
                   height: getProportionateScreenHeight(18),
-                  color: textColor,
+                  color: Theme.of(context).accentColor,
                 )
                 // Image.asset(
                 //   IconsAvailable.homeIcon["assetPath"],
@@ -43,7 +42,7 @@ class _NavigationBarState extends State<NavigationBar> {
               child: SvgPicture.asset(
                   'assets/images/Vectorsearch.svg',
                   height: getProportionateScreenHeight(18),
-                  color: textColor,
+                  color: Theme.of(context).accentColor,
                 )
             ),
             InkWell(
@@ -56,7 +55,7 @@ class _NavigationBarState extends State<NavigationBar> {
               child: SvgPicture.asset(
                   'assets/images/Vectorexplore.svg',
                   height: getProportionateScreenHeight(18),
-                  color: textColor,
+                  color: Theme.of(context).accentColor,
                 )
             ),
             InkWell(
@@ -64,7 +63,7 @@ class _NavigationBarState extends State<NavigationBar> {
               child: SvgPicture.asset(
                   'assets/images/Vectoruser.svg',
                   height: getProportionateScreenHeight(18),
-                  color: textColor,
+                  color: Theme.of(context).accentColor,
                 )
             )
           ],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_clone/utils/app_colors.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:weather_app_clone/utils/constants.dart';
 
@@ -15,10 +14,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: bgColor,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: bgColor,
         elevation: 0.0,
         leading: IconButton(
             onPressed: () {
@@ -26,15 +23,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
             },
             icon: Icon(
               Icons.chevron_left,
-              color: textColor,
+              color: Theme.of(context).cardColor,
             )),
         title: Text(
           'Explore',
-          style: TextStyle(
-              fontSize: getProportionateScreenWidth(19),
-              color: textColor,
-              fontWeight: FontWeight.w600,
-              fontFamily: Fonts.primaryFont),
+          style: Theme.of(context).textTheme.headline2
         ),
       ),
       body: Stack(
@@ -43,11 +36,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
             top: getProportionateScreenHeight(10),
             child: Container(
               width: SizeConfig.screenWidth,
-              // padding: EdgeInsets.symmetric(
-              //     vertical: getProportionateScreenHeight(10)),
               child: Opacity(
                 opacity: 0.2,
                 child: Image.asset(
+                  //
+                  // Address forecast image
+                  //
                   ImagesAvailable.backgroundImage["assetPath"],
                   fit: BoxFit.fill,
                   height: MediaQuery.of(context).size.height / 3.5,
@@ -64,7 +58,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 Image.asset(
                   ImagesAvailable.rainyCloudy["assetPath"],
                   width: getProportionateScreenWidth(150),
-                  // height: SizeConfig.screenWidth / 2,
                 ),
                 SizedBox(
                   width: getProportionateScreenWidth(10),
@@ -74,43 +67,25 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   children: [
                     Text(
                       'Tomorrow',
-                      style: TextStyle(
-                          fontSize: getProportionateScreenWidth(20),
-                          color: textColor,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: Fonts.primaryFont),
+                      style: Theme.of(context).textTheme.subtitle1
                     ),
                     RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
                         // Note: Styles for TextSpans must be explicitly defined.
                         // Child text spans will inherit styles from parent
-                        style: TextStyle(
-                          fontSize: getProportionateScreenWidth(70),
-                          color: textColor,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: Fonts.primaryFont,
-                        ),
+                        style: Theme.of(context).textTheme.headline4,
                         children: <TextSpan>[
                           TextSpan(text: '27'),
                           TextSpan(
                               text: "/30",
-                              style: TextStyle(
-                                fontSize: getProportionateScreenWidth(30),
-                                color: textColor,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: Fonts.primaryFont,
-                              ))
+                              style: Theme.of(context).textTheme.headline5)
                         ],
                       ),
                     ),
                     Text(
                       'Rainy Cloudy',
-                      style: TextStyle(
-                          fontSize: getProportionateScreenWidth(20),
-                          color: textColor,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: Fonts.primaryFont),
+                      style: Theme.of(context).textTheme.subtitle1
                     )
                   ],
                 )
@@ -136,7 +111,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     child: Container(
                       width: getProportionateScreenWidth(86),
                       height: getProportionateScreenHeight(6),
-                      decoration: BoxDecoration(color: Colors.grey[600]),
+                      decoration: BoxDecoration(
+                          color: Colors.grey[600],
+                          borderRadius: BorderRadius.circular(5)),
                     ),
                   ),
                   SizedBox(
@@ -150,11 +127,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     children: [
                       Text(
                         'Mon',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                       Row(
                         children: [
@@ -168,22 +141,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           ),
                           Text(
                             'Rainy',
-                            style: TextStyle(
-                                fontSize: getProportionateScreenWidth(19),
-                                color: textColor,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: Fonts.primaryFont),
-                          ),
+                            style: Theme.of(context).textTheme.headline6)
                         ],
                       ),
                       Text(
                         '27/30',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
-                      ),
+                        style: Theme.of(context).textTheme.headline6)
                     ],
                   ),
                   SizedBox(
@@ -197,11 +160,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     children: [
                       Text(
                         'Tue',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                       Row(
                         children: [
@@ -215,21 +174,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           ),
                           Text(
                             'Storm',
-                            style: TextStyle(
-                                fontSize: getProportionateScreenWidth(19),
-                                color: textColor,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: Fonts.primaryFont),
+                            style: Theme.of(context).textTheme.headline6
                           ),
                         ],
                       ),
                       Text(
                         '21/30',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                     ],
                   ),
@@ -244,11 +195,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     children: [
                       Text(
                         'Wed',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                       Row(
                         children: [
@@ -262,21 +209,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           ),
                           Text(
                             'Sunny',
-                            style: TextStyle(
-                                fontSize: getProportionateScreenWidth(19),
-                                color: textColor,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: Fonts.primaryFont),
+                            style: Theme.of(context).textTheme.headline6
                           ),
                         ],
                       ),
                       Text(
                         '32/33',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                     ],
                   ),
@@ -291,11 +230,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     children: [
                       Text(
                         'Thu',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                       Row(
                         children: [
@@ -309,21 +244,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           ),
                           Text(
                             'Cloudy',
-                            style: TextStyle(
-                                fontSize: getProportionateScreenWidth(19),
-                                color: textColor,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: Fonts.primaryFont),
+                            style: Theme.of(context).textTheme.headline6
                           ),
                         ],
                       ),
                       Text(
                         '30/31',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                     ],
                   ),
@@ -338,11 +265,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     children: [
                       Text(
                         'Fri',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                       Row(
                         children: [
@@ -356,21 +279,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           ),
                           Text(
                             'Rainy',
-                            style: TextStyle(
-                                fontSize: getProportionateScreenWidth(19),
-                                color: textColor,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: Fonts.primaryFont),
+                            style: Theme.of(context).textTheme.headline6
                           ),
                         ],
                       ),
                       Text(
                         '19/20',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                     ],
                   ),
@@ -385,11 +300,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     children: [
                       Text(
                         'Sat',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                       Row(
                         children: [
@@ -403,21 +314,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           ),
                           Text(
                             'Cloudy',
-                            style: TextStyle(
-                                fontSize: getProportionateScreenWidth(19),
-                                color: textColor,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: Fonts.primaryFont),
+                            style: Theme.of(context).textTheme.headline6
                           ),
                         ],
                       ),
                       Text(
                         '27/30',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                     ],
                   ),
@@ -432,11 +335,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     children: [
                       Text(
                         'Sun',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                       Row(
                         children: [
@@ -450,21 +349,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           ),
                           Text(
                             'Rainy',
-                            style: TextStyle(
-                                fontSize: getProportionateScreenWidth(19),
-                                color: textColor,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: Fonts.primaryFont),
+                            style: Theme.of(context).textTheme.headline6
                           ),
                         ],
                       ),
                       Text(
                         '14/16',
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(19),
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: Fonts.primaryFont),
+                        style: Theme.of(context).textTheme.headline6
                       ),
                     ],
                   ),
