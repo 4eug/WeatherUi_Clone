@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:weather_app_clone/helpers/weatherGetter.dart';
 import 'package:weather_app_clone/model/weather.dart';
+import 'package:weather_app_clone/screens/explore.dart';
 import 'package:weather_app_clone/utils/app_colors.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:weather_app_clone/utils/constants.dart';
@@ -96,10 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "$location, $country",
-                            style: Theme.of(context).textTheme.headline2
-                          ),
+                          Text("$location, $country",
+                              style: Theme.of(context).textTheme.headline2),
                         ],
                       ),
                       SizedBox(
@@ -139,18 +138,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            currentCondition,
-                            style: Theme.of(context).textTheme.headline3
-                          ),
+                          Text(currentCondition,
+                              style: Theme.of(context).textTheme.headline3),
                         ],
                       ),
                       SizedBox(height: getProportionateScreenHeight(90)),
                       Center(
-                        child: Text(
-                          "Hourly",
-                          style: Theme.of(context).textTheme.subtitle1
-                        ),
+                        child: Text("Hourly",
+                            style: Theme.of(context).textTheme.subtitle1),
                       ),
                       SizedBox(height: getProportionateScreenHeight(20)),
                       Row(
@@ -163,10 +158,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           //
                           Column(
                             children: [
-                              Text(
-                                "13:00pm",
-                                style: Theme.of(context).textTheme.subtitle2
-                              ),
+                              Text("13:00pm",
+                                  style: Theme.of(context).textTheme.subtitle2),
                               SizedBox(height: getProportionateScreenHeight(5)),
                               Container(
                                 child: Image.asset(
@@ -202,10 +195,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           //
                           Column(
                             children: [
-                              Text(
-                                "16:00pm",
-                                style: Theme.of(context).textTheme.subtitle2
-                              ),
+                              Text("16:00pm",
+                                  style: Theme.of(context).textTheme.subtitle2),
                               SizedBox(height: getProportionateScreenHeight(5)),
                               Container(
                                 child: Image.asset(
@@ -241,10 +232,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           //
                           Column(
                             children: [
-                              Text(
-                                "07:00pm",
-                                style: Theme.of(context).textTheme.subtitle2
-                              ),
+                              Text("07:00pm",
+                                  style: Theme.of(context).textTheme.subtitle2),
                               SizedBox(height: getProportionateScreenHeight(5)),
                               Container(
                                 child: Image.asset(
@@ -285,7 +274,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Container(
                           height: getProportionateScreenHeight(60),
                           width: getProportionateScreenWidth(275),
-                          child: NavigationBar()))
+                          child: NavigationBar(
+                            press: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ExploreScreen()),
+                              );
+                            },
+                          )))
                 ],
               );
             }

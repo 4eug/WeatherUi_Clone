@@ -45,12 +45,12 @@ class ForecastDay {
 
 class ForecastHour {
   final double tempC;
-  // final String condition;
+  final String condition;
   // final String time;
   // final String timeEpoch;
 
   ForecastHour({
-    // this.condition,
+    this.condition,
     this.tempC,
     // this.time,
     // this.timeEpoch
@@ -59,7 +59,7 @@ class ForecastHour {
   factory ForecastHour.fromJson(Map<String, dynamic> parsedJson) {
     return ForecastHour(
       tempC: parsedJson['temp_c'],
-      // condition: parsedJson['condition']['text'],
+      condition: parsedJson['condition']['text'],
       // time: parsedJson['time'],
       // timeEpoch: parsedJson['time_epoch']
     );

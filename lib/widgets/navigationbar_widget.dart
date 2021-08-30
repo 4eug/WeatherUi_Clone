@@ -4,7 +4,8 @@ import 'package:weather_app_clone/screens/explore.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
 
 class NavigationBar extends StatefulWidget {
-  NavigationBar({Key key}) : super(key: key);
+  NavigationBar({Key key, this.press}) : super(key: key);
+  final Function press;
 
   @override
   _NavigationBarState createState() => _NavigationBarState();
@@ -27,8 +28,8 @@ class _NavigationBarState extends State<NavigationBar> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             InkWell(
-              onTap: () {},
-              child: SvgPicture.asset(
+                onTap: () {},
+                child: SvgPicture.asset(
                   'assets/images/Vectorhome.svg',
                   height: getProportionateScreenHeight(18),
                   color: Theme.of(context).accentColor,
@@ -36,36 +37,28 @@ class _NavigationBarState extends State<NavigationBar> {
                 // Image.asset(
                 //   IconsAvailable.homeIcon["assetPath"],
                 // ),
-            ),
+                ),
             InkWell(
-              onTap: () {},
-              child: SvgPicture.asset(
+                onTap: () {},
+                child: SvgPicture.asset(
                   'assets/images/Vectorsearch.svg',
                   height: getProportionateScreenHeight(18),
                   color: Theme.of(context).accentColor,
-                )
-            ),
+                )),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ExploreScreen()),
-                  );
-              },
-              child: SvgPicture.asset(
+                onTap: widget.press,
+                child: SvgPicture.asset(
                   'assets/images/Vectorexplore.svg',
                   height: getProportionateScreenHeight(18),
                   color: Theme.of(context).accentColor,
-                )
-            ),
+                )),
             InkWell(
-              onTap: () {},
-              child: SvgPicture.asset(
+                onTap: () {},
+                child: SvgPicture.asset(
                   'assets/images/Vectoruser.svg',
                   height: getProportionateScreenHeight(18),
                   color: Theme.of(context).accentColor,
-                )
-            )
+                ))
           ],
         ),
       ),
