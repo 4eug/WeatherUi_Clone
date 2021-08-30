@@ -38,9 +38,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
               child: Opacity(
                 opacity: 0.2,
                 child: Image.asset(
-                  //
-                  // Address forecast image
-                  //
                   ImagesAvailable.backgroundImage["assetPath"],
                   fit: BoxFit.fill,
                   height: MediaQuery.of(context).size.height / 3.5,
@@ -54,8 +51,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                //
+                // Address forecast image
+                //
                 Image.asset(
-                  ImagesAvailable.rainyCloudy["assetPath"],
+                   'assets/images/${widget.forecast.forecastDay[1].condition}day.png',
                   width: getProportionateScreenWidth(150),
                 ),
                 SizedBox(
@@ -73,15 +73,24 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         // Child text spans will inherit styles from parent
                         style: Theme.of(context).textTheme.headline4,
                         children: <TextSpan>[
-                          TextSpan(text: '27'),
                           TextSpan(
-                              text: "/30",
+                              text: widget.forecast.forecastDay[1].minTempC
+                                  .round()
+                                  .toString()),
+                          TextSpan(
+                              text:
+                                  "/${widget.forecast.forecastDay[1].maxTempC.round().toString()}",
                               style: Theme.of(context).textTheme.headline5)
                         ],
                       ),
                     ),
-                    Text(widget.forecast.forecastDay[1].condition,
-                        style: Theme.of(context).textTheme.subtitle1)
+                    SizedBox(
+                      width: 171,
+                      child: FittedBox(
+                        child: Text(widget.forecast.forecastDay[1].condition,
+                            style: Theme.of(context).textTheme.subtitle1),
+                      ),
+                    )
                   ],
                 )
               ],
