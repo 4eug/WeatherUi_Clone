@@ -217,7 +217,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       Row(
                         children: [
                           Image.asset(
-                            ImagesAvailable.partlyCloudy["assetPath"],
+                            'assets/images/Cloudyday.png',
                             width: getProportionateScreenWidth(40),
                             // height: SizeConfig.screenWidth / 2,
                           ),
@@ -273,7 +273,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       Row(
                         children: [
                           Image.asset(
-                            ImagesAvailable.partlyCloudy["assetPath"],
+                            'assets/images/Cloudyday.png',
                             width: getProportionateScreenWidth(40),
                             // height: SizeConfig.screenWidth / 2,
                           ),
