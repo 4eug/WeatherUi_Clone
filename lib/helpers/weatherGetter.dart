@@ -15,6 +15,7 @@ class WeatherService {
           WeatherForecast.fromJson(jsonDecode(response.body));
       print(weather.forecastDay[0].date);
       print(weather.forecastHour[0].tempC);
+      print('gotten');
       return weather;
       //returning parsed data from json issue
 
