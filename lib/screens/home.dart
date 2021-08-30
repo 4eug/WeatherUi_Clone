@@ -279,7 +279,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ExploreScreen()),
+                                    builder: (context) => ExploreScreen(
+                                          forecast: forecast,
+                                        )),
                               );
                             },
                           )))

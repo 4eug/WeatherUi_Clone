@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_clone/model/weather.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:weather_app_clone/utils/constants.dart';
 
 class ExploreScreen extends StatefulWidget {
-  ExploreScreen({Key key}) : super(key: key);
+  final WeatherForecast forecast;
+  ExploreScreen({Key key, @required this.forecast}) : super(key: key);
 
   @override
   _ExploreScreenState createState() => _ExploreScreenState();
@@ -25,10 +27,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               Icons.chevron_left,
               color: Theme.of(context).cardColor,
             )),
-        title: Text(
-          'Explore',
-          style: Theme.of(context).textTheme.headline2
-        ),
+        title: Text('Explore', style: Theme.of(context).textTheme.headline2),
       ),
       body: Stack(
         children: [
@@ -65,10 +64,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Tomorrow',
-                      style: Theme.of(context).textTheme.subtitle1
-                    ),
+                    Text('Tomorrow',
+                        style: Theme.of(context).textTheme.subtitle1),
                     RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
@@ -83,10 +80,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         ],
                       ),
                     ),
-                    Text(
-                      'Rainy Cloudy',
-                      style: Theme.of(context).textTheme.subtitle1
-                    )
+                    Text(widget.forecast.forecastDay[1].condition,
+                        style: Theme.of(context).textTheme.subtitle1)
                   ],
                 )
               ],
@@ -125,10 +120,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(
-                        'Mon',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('Mon', style: Theme.of(context).textTheme.headline6),
                       Row(
                         children: [
                           Image.asset(
@@ -139,14 +131,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           SizedBox(
                             width: getProportionateScreenWidth(7),
                           ),
-                          Text(
-                            'Rainy',
-                            style: Theme.of(context).textTheme.headline6)
+                          Text('Rainy',
+                              style: Theme.of(context).textTheme.headline6)
                         ],
                       ),
-                      Text(
-                        '27/30',
-                        style: Theme.of(context).textTheme.headline6)
+                      Text('27/30',
+                          style: Theme.of(context).textTheme.headline6)
                     ],
                   ),
                   SizedBox(
@@ -158,10 +148,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(
-                        'Tue',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('Tue', style: Theme.of(context).textTheme.headline6),
                       Row(
                         children: [
                           Image.asset(
@@ -172,16 +159,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           SizedBox(
                             width: getProportionateScreenWidth(7),
                           ),
-                          Text(
-                            'Storm',
-                            style: Theme.of(context).textTheme.headline6
-                          ),
+                          Text('Storm',
+                              style: Theme.of(context).textTheme.headline6),
                         ],
                       ),
-                      Text(
-                        '21/30',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('21/30',
+                          style: Theme.of(context).textTheme.headline6),
                     ],
                   ),
                   SizedBox(
@@ -193,10 +176,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(
-                        'Wed',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('Wed', style: Theme.of(context).textTheme.headline6),
                       Row(
                         children: [
                           Image.asset(
@@ -207,16 +187,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           SizedBox(
                             width: getProportionateScreenWidth(7),
                           ),
-                          Text(
-                            'Sunny',
-                            style: Theme.of(context).textTheme.headline6
-                          ),
+                          Text('Sunny',
+                              style: Theme.of(context).textTheme.headline6),
                         ],
                       ),
-                      Text(
-                        '32/33',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('32/33',
+                          style: Theme.of(context).textTheme.headline6),
                     ],
                   ),
                   SizedBox(
@@ -228,10 +204,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(
-                        'Thu',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('Thu', style: Theme.of(context).textTheme.headline6),
                       Row(
                         children: [
                           Image.asset(
@@ -242,16 +215,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           SizedBox(
                             width: getProportionateScreenWidth(7),
                           ),
-                          Text(
-                            'Cloudy',
-                            style: Theme.of(context).textTheme.headline6
-                          ),
+                          Text('Cloudy',
+                              style: Theme.of(context).textTheme.headline6),
                         ],
                       ),
-                      Text(
-                        '30/31',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('30/31',
+                          style: Theme.of(context).textTheme.headline6),
                     ],
                   ),
                   SizedBox(
@@ -263,10 +232,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(
-                        'Fri',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('Fri', style: Theme.of(context).textTheme.headline6),
                       Row(
                         children: [
                           Image.asset(
@@ -277,16 +243,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           SizedBox(
                             width: getProportionateScreenWidth(7),
                           ),
-                          Text(
-                            'Rainy',
-                            style: Theme.of(context).textTheme.headline6
-                          ),
+                          Text('Rainy',
+                              style: Theme.of(context).textTheme.headline6),
                         ],
                       ),
-                      Text(
-                        '19/20',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('19/20',
+                          style: Theme.of(context).textTheme.headline6),
                     ],
                   ),
                   SizedBox(
@@ -298,10 +260,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(
-                        'Sat',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('Sat', style: Theme.of(context).textTheme.headline6),
                       Row(
                         children: [
                           Image.asset(
@@ -312,16 +271,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           SizedBox(
                             width: getProportionateScreenWidth(7),
                           ),
-                          Text(
-                            'Cloudy',
-                            style: Theme.of(context).textTheme.headline6
-                          ),
+                          Text('Cloudy',
+                              style: Theme.of(context).textTheme.headline6),
                         ],
                       ),
-                      Text(
-                        '27/30',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('27/30',
+                          style: Theme.of(context).textTheme.headline6),
                     ],
                   ),
                   SizedBox(
@@ -333,10 +288,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(
-                        'Sun',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('Sun', style: Theme.of(context).textTheme.headline6),
                       Row(
                         children: [
                           Image.asset(
@@ -347,16 +299,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           SizedBox(
                             width: getProportionateScreenWidth(7),
                           ),
-                          Text(
-                            'Rainy',
-                            style: Theme.of(context).textTheme.headline6
-                          ),
+                          Text('Rainy',
+                              style: Theme.of(context).textTheme.headline6),
                         ],
                       ),
-                      Text(
-                        '14/16',
-                        style: Theme.of(context).textTheme.headline6
-                      ),
+                      Text('14/16',
+                          style: Theme.of(context).textTheme.headline6),
                     ],
                   ),
                 ],

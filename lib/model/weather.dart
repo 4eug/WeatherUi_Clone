@@ -35,11 +35,14 @@ class WeatherForecast {
 
 class ForecastDay {
   final String date;
+  final String condition;
 
-  ForecastDay({this.date});
+  ForecastDay({this.date, this.condition});
 
   factory ForecastDay.fromJson(Map<String, dynamic> parsedJson) {
-    return ForecastDay(date: parsedJson['date']);
+    return ForecastDay(
+        date: parsedJson['date'],
+        condition: parsedJson['day']['condition']['text']);
   }
 }
 
