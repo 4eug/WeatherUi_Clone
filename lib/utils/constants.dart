@@ -4,8 +4,8 @@ import 'package:intl/intl.dart';
 bool isSwitchOn = false;
 
 var dayOrNight;
-var date = DateFormat('H').format(DateTime.now());
-var dateHour = int.parse(date);
+var dtt = DateFormat('H').format(DateTime.now());
+var dttInt = int.parse(dtt);
 
 
 class IconsAvailable {

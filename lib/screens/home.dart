@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
 import 'package:weather_app_clone/helpers/weatherGetter.dart';
 import 'package:weather_app_clone/model/weather.dart';
-import 'package:weather_app_clone/screens/explore.dart';
 import 'package:weather_app_clone/utils/app_colors.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:weather_app_clone/utils/constants.dart';
@@ -24,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(dateHour);
     futureWeather = WeatherService().fetchWeather();
   }
 
@@ -60,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       //     : textColor = Colors.black;
                       isSwitchOn ? bgOpacity = 0.9 : bgOpacity = 0.2;
                       //review
-                      // isSwitchOn ? Brightness.light : Brightness.dark;
+                      isSwitchOn ? Brightness.light : Brightness.dark;
                     });
                   }),
             ),
@@ -76,13 +73,8 @@ class _HomeScreenState extends State<HomeScreen> {
               final temperature = forecast.tempCelsius.toInt();
               final currentCondition = forecast.currentCondition;
               final hourlyTemp = forecast.forecastHour;
-              final hourlyCondition = forecast.forecastHour;
-              final hourlyTime = forecast.forecastHour;
               return Stack(
                 children: [
-                  //
-                  // backgroud image
-                  //
                   Container(
                     padding: EdgeInsets.symmetric(
                         vertical: getProportionateScreenHeight(80)),
@@ -104,8 +96,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("$location, $country",
-                              style: Theme.of(context).textTheme.headline2),
+                          Text(
+                            "$location, $country",
+                            style: Theme.of(context).textTheme.headline2
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -113,7 +107,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Center(
                         child: Image.asset(
-                            'assets/images/$currentCondition${dateHour > 6 && dateHour < 18 ? 'day' : 'night'}.png',
+                            'assets/images/$currentCondition${dttInt > 6 && dttInt < 18 ? 'day' : 'night'}.png',
+                            // height: getProportionateScreenWidth(20),
                             width: getProportionateScreenWidth(162)),
                       ),
                       SizedBox(height: getProportionateScreenHeight(5)),
@@ -144,14 +139,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(currentCondition,
-                              style: Theme.of(context).textTheme.headline3),
+                          Text(
+                            currentCondition,
+                            style: Theme.of(context).textTheme.headline3
+                          ),
                         ],
                       ),
                       SizedBox(height: getProportionateScreenHeight(90)),
                       Center(
-                        child: Text("Hourly",
-                            style: Theme.of(context).textTheme.subtitle1),
+                        child: Text(
+                          "Hourly",
+                          style: Theme.of(context).textTheme.subtitle1
+                        ),
                       ),
                       SizedBox(height: getProportionateScreenHeight(20)),
                       Row(
@@ -164,13 +163,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           //
                           Column(
                             children: [
-                              Text("13:00pm",
-                                  style: Theme.of(context).textTheme.subtitle2),
+                              Text(
+                                "13:00pm",
+                                style: Theme.of(context).textTheme.subtitle2
+                              ),
                               SizedBox(height: getProportionateScreenHeight(5)),
                               Container(
                                 child: Image.asset(
-                                  'assets/images/${hourlyCondition[13].condition}${dateHour > 6 && dateHour < 18 ? 'day' : 'night'}.png',
-                                  scale: 1,
+                                  ImagesAvailable.partlyCloudy["assetPath"],
                                   height: getProportionateScreenHeight(50),
                                   width: getProportionateScreenHeight(50),
                                 ),
@@ -182,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(hourlyTemp[13].tempC.round().toString(),
+                                  Text(hourlyTemp[0].tempC.round().toString(),
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyText1),
@@ -202,12 +202,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           //
                           Column(
                             children: [
-                              Text("16:00pm",
-                                  style: Theme.of(context).textTheme.subtitle2),
+                              Text(
+                                "16:00pm",
+                                style: Theme.of(context).textTheme.subtitle2
+                              ),
                               SizedBox(height: getProportionateScreenHeight(5)),
                               Container(
                                 child: Image.asset(
-                                  'assets/images/${hourlyCondition[16].condition}${dateHour > 6 && dateHour < 18 ? 'day' : 'night'}.png',
+                                  ImagesAvailable.sunny["assetPath"],
                                   height: getProportionateScreenHeight(50),
                                   width: getProportionateScreenHeight(50),
                                 ),
@@ -219,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(hourlyTemp[16].tempC.round().toString(),
+                                  Text(hourlyTemp[1].tempC.round().toString(),
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyText1),
@@ -239,12 +241,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           //
                           Column(
                             children: [
-                              Text("07:00pm",
-                                  style: Theme.of(context).textTheme.subtitle2),
+                              Text(
+                                "07:00pm",
+                                style: Theme.of(context).textTheme.subtitle2
+                              ),
                               SizedBox(height: getProportionateScreenHeight(5)),
                               Container(
                                 child: Image.asset(
-                                  'assets/images/${hourlyCondition[19].condition}${int.parse(DateFormat('H').format(DateTime.parse(hourlyTime[19].time))) > 6 && int.parse(DateFormat('H').format(DateTime.parse(hourlyTime[19].time))) <= 18 ? 'day' : 'night'}.png',
+                                  ImagesAvailable.moonCloudy["assetPath"],
                                   height: getProportionateScreenHeight(50),
                                   width: getProportionateScreenHeight(50),
                                 ),
@@ -256,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(hourlyTemp[19].tempC.round().toString(),
+                                  Text(hourlyTemp[12].tempC.round().toString(),
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyText1),
@@ -281,17 +285,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Container(
                           height: getProportionateScreenHeight(60),
                           width: getProportionateScreenWidth(275),
-                          child: NavigationBar(
-                            press: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ExploreScreen(
-                                          forecast: forecast,
-                                        )),
-                              );
-                            },
-                          )))
+                          child: NavigationBar()))
                 ],
               );
             }
