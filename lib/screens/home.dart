@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:geocoding/geocoding.dart' as geocoding;
+import 'package:geocoding/geocoding.dart';
+import 'package:location/location.dart';
 import 'package:weather_app_clone/helpers/weatherGetter.dart';
 import 'package:weather_app_clone/model/weather.dart';
 import 'package:weather_app_clone/screens/explore.dart';
@@ -18,12 +21,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   Future<WeatherForecast> futureWeather;
+  weatherWithAddress() async {
+    getLocation().then((value) {
+      setState(() {
+        futureWeather = WeatherService().fetchWeather(value);
+      });
+    });
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    futureWeather = WeatherService().fetchWeather();
+    weatherWithAddress();
   }
 
   @override
@@ -286,6 +296,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                           )))
                 ],
+              );
+            }
+
+            if (snapshot.hasError) {
+              return Center(
+                child: Text(snapshot.error.toString()),
               );
             }
             // loading weather animation

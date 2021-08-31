@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:weather_app_clone/screens/explore.dart';
 import 'package:weather_app_clone/utils/app_config.dart';
 
 class NavigationBar extends StatefulWidget {
