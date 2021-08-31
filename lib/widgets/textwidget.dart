@@ -1,24 +1,39 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:weather_app_clone/utils/app_colors.dart';
+import 'package:weather_app_clone/utils/app_config.dart';
 import 'package:weather_app_clone/utils/constants.dart';
 
 Widget degrees() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Text("31",
+      RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          // Note: Styles for TextSpans must be explicitly defined.
+          // Child text spans will inherit styles from parent
           style: TextStyle(
-            fontSize: 110,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+            fontSize: getProportionateScreenWidth(80),
+            color: textColor,
+            fontWeight: FontWeight.w600,
             fontFamily: Fonts.primaryFont,
-          )),
-      Text("°",
+          ),
+          children: <TextSpan>[
+            TextSpan(text: '31'),
+            TextSpan(
+                text: "°",
           style: TextStyle(
-            fontSize: 90,
+            fontSize: getProportionateScreenWidth(80),
             color: Colors.yellow,
             fontWeight: FontWeight.bold,
             fontFamily: Fonts.primaryFont,
           ))
+          ],
+        ),
+      ),
+      
     ],
   );
 }
@@ -29,8 +44,9 @@ Widget degrees1() {
     children: [
       Text("31",
           style: TextStyle(
-            fontSize: 30,
-            color: Colors.black,
+            height: 1,
+            fontSize: 22,
+            color: textColor,
             fontWeight: FontWeight.bold,
             fontFamily: Fonts.primaryFont,
           )),
@@ -45,14 +61,15 @@ Widget degrees1() {
   );
 }
 
-Widget degrees2() {
+degrees2() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Text("28",
           style: TextStyle(
-            fontSize: 30,
-            color: Colors.black,
+            height: 1,
+            fontSize: 22,
+            color: textColor,
             fontWeight: FontWeight.bold,
             fontFamily: Fonts.primaryFont,
           )),
@@ -73,8 +90,9 @@ Widget degrees3() {
     children: [
       Text("26",
           style: TextStyle(
-            fontSize: 30,
-            color: Colors.black,
+            height: 1,
+            fontSize: 22,
+            color: textColor,
             fontWeight: FontWeight.bold,
             fontFamily: Fonts.primaryFont,
           )),
