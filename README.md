@@ -9,7 +9,13 @@ Dribbble :https://dribbble.com/shots/15411806-Weather-App
 
 <img src="assets/ui/WeatherUi.jpg" height="500em" />
 
-## Preview On Device
+## Screenshots form Device
 
-<img src="assets/screenshots/flutter_01.jpeg/" width="350" />
-<img src="assets/screenshots/flutter_02.jpeg/" width="350" />
+<table>
+<td>
+<img src="assets/screenshots/flutter_01.jpeg/" height="500em" />
+</td>
+<td>
+<img src="assets/screenshots/flutter_02.jpeg/" height="500em" />
+</td>
+</table>
