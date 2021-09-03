@@ -11,5 +11,5 @@ Dribbble :https://dribbble.com/shots/15411806-Weather-App
 
 ## Preview On Device
 
-<img src="assets/screenshots/flutter_01.jpeg/" height="500em" />
-<img src="assets/screenshots/flutter_02.jpeg/" height="500em" />
+<img src="assets/screenshots/flutter_01.jpeg/" width="350" />
+<img src="assets/screenshots/flutter_02.jpeg/" width="350" />
